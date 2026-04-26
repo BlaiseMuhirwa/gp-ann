@@ -1,12 +1,12 @@
 #include <iostream>
 #include <parlay/primitives.h>
 
-#include "points_io.h"
-#include "metis_io.h"
-#include "route_search_combination.h"
 #include "dist.h"
+#include "metis_io.h"
+#include "points_io.h"
+#include "route_search_combination.h"
 
-int main(int argc, const char* argv[]) {
+int main(int argc, const char *argv[]) {
 #if false
     std::string file = argv[1];
     Clusters clusters = ReadClusters(file);
@@ -61,31 +61,35 @@ int main(int argc, const char* argv[]) {
 #endif
 
 #if true
-    if (argc != 6) {
-        std::cerr << "Usage ./Convert routes searches output part-method query-file" << std::endl;
-        std::abort();
-    }
+  if (argc != 6) {
+    std::cerr << "Usage ./Convert routes searches output part-method query-file"
+              << std::endl;
+    std::abort();
+  }
 
-    std::string searches_file = argv[2];
-    auto searches = DeserializeShardSearches(searches_file);
+  std::string searches_file = argv[2];
+  auto searches = DeserializeShardSearches(searches_file);
 
-    std::cout << "Finished loading searches" << std::endl;
+  std::cout << "Finished loading searches" << std::endl;
 
-    std::string routes_file = argv[1];
-    auto routes = DeserializeRoutes(routes_file);
+  std::string routes_file = argv[1];
+  auto routes = DeserializeRoutes(routes_file);
 
-    std::cout << "num routes " << routes.size() << " num searches " << searches.size() << std::endl;
+  std::cout << "num routes " << routes.size() << " num searches "
+            << searches.size() << std::endl;
 
-    std::string output_file = argv[3];
-    std::string part_method = argv[4];
-    std::string query_file = argv[5];
+  std::string output_file = argv[3];
+  std::string part_method = argv[4];
+  std::string query_file = argv[5];
 
-    int num_actual_shards = searches.front().neighbors.size();
-    std::cout << "num actual shards = " << num_actual_shards << std::endl;
+  int num_actual_shards = searches.front().neighbors.size();
+  std::cout << "num actual shards = " << num_actual_shards << std::endl;
 
-    auto queries = ReadPoints(query_file);
-    int num_queries = queries.n;
+  auto queries = ReadPoints(query_file);
+  int num_queries = queries.n;
 
-    PrintCombinationsOfRoutesAndSearches(routes, searches, output_file, 10, num_queries, num_actual_shards, 40, part_method);
+  PrintCombinationsOfRoutesAndSearches(routes, searches, output_file, 10,
+                                       num_queries, num_actual_shards, 40,
+                                       part_method);
 #endif
 }

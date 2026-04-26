@@ -1,0 +1,96 @@
+# Build artifacts
+build/
+build-*/
+out/
+cmake-build-*/
+release/
+release_l2/
+release_mips/
+debug/
+Makefile.local
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+_deps/
+compile_commands.json
+
+# Object files & libraries
+*.o
+*.obj
+*.lo
+*.slo
+*.ko
+*.a
+*.la
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+*.gch
+*.pch
+*.d
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+.pg-ann-env/
+
+# IDE / editor
+.vscode/
+.idea/
+.clangd/
+.clangd
+.cache/
+.ccls-cache/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs & temp
+*.log
+*.tmp
+*.bak
+core
+core.*
+
+# Data / large artifacts
+data/
+*.bin
+*.fvecs
+*.ivecs
+*.bvecs
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.ckpt
+*.pt
+*.pth

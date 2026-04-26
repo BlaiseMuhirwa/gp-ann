@@ -1,13 +1,13 @@
 set(Sources
-		defs.cpp
-		dist.cpp
-		kmeans.cpp
-		points_io.cpp
-		metis_io.cpp
+	defs.cpp
+	dist.cpp
+	kmeans.cpp
+	points_io.cpp
+	metis_io.cpp
 )
 
-set (RoutingSources
-		kmeans_tree_router.cpp
+set(RoutingSources
+	kmeans_tree_router.cpp
 )
 
 foreach(target IN LISTS TARGETS)
@@ -27,3 +27,5 @@ target_sources(GraphQualityBench PRIVATE partitioning.cpp)
 target_sources(OracleRecall PRIVATE routes.cpp kmeans_tree_router.cpp)
 
 target_sources(AnalyzeApproximationLosses PRIVATE routes.cpp kmeans_tree_router.cpp)
+
+target_sources(BigANNExperiment PRIVATE partitioning.cpp routes.cpp shard_searches.cpp route_search_combination.cpp kmeans_tree_router.cpp)

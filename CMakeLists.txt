@@ -31,6 +31,8 @@ add_executable(OracleRecall oracle_recall.cpp)
 # add_executable(DistributedBench distributed_bench.cpp)
 add_executable(GraphQualityBench graph_quality_benchmark.cpp)
 add_executable(AnalyzeApproximationLosses analyze_approximation_losses.cpp)
+add_executable(BigANNExperiment bigann_experiment.cpp)
+add_executable(AnnExperiment ann_experiment.cpp)
 
 set(TARGETS
 		SmallScaleQueries
@@ -41,6 +43,8 @@ set(TARGETS
 		# DistributedBench
 		GraphQualityBench
 		AnalyzeApproximationLosses
+		BigANNExperiment
+		AnnExperiment
 )
 
 foreach(target IN LISTS TARGETS)
@@ -49,6 +53,7 @@ endforeach()
 
 target_link_libraries(Partition PUBLIC kaminpar_shm)
 target_link_libraries(GraphQualityBench PUBLIC kaminpar_shm)
+target_link_libraries(BigANNExperiment PUBLIC kaminpar_shm)
 # target_link_libraries(DistributedBench PUBLIC message-queue kassert::kassert)
 
 OPTION(MIPS_DISTANCE "Use MIPS distance instead of L2" OFF)
@@ -61,6 +66,7 @@ endif(MIPS_DISTANCE)
 find_library(TCMALLOC_LIB tcmalloc)
 if (TCMALLOC_LIB)
 	target_link_libraries(Partition PUBLIC ${TCMALLOC_LIB})
+	target_link_libraries(BigANNExperiment PUBLIC ${TCMALLOC_LIB})
 	# target_link_libraries(QueryAttribution PUBLIC ${TCMALLOC_LIB})
 	message(STATUS "Using tcmalloc: ${TCMALLOC_LIB}")
 else ()
